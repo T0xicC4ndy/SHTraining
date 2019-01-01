@@ -25,18 +25,23 @@ public class GeographicArea {
      * empty constructor to use on UIs
      */
     public GeographicArea() {
-
+        mSensorList = new SensorList();
+        mHouseList = new HouseList();
     }
 
     public GeographicArea(String mName, TypeArea mTypeArea, Local mLocal) {
         setName(mName);
         setTypeArea(mTypeArea);
         setLocal(mLocal);
+        mSensorList = new SensorList();
+        mHouseList = new HouseList();
 
     }
 
     public GeographicArea(String mName) {
         setName(mName);
+        mSensorList = new SensorList();
+        mHouseList = new HouseList();
 
     }
 
@@ -50,6 +55,8 @@ public class GeographicArea {
     public GeographicArea(TypeArea typeArea, Local local) {
         setTypeArea(typeArea);
         setLocal(local);
+        mSensorList = new SensorList();
+        mHouseList = new HouseList();
     }
 
     /**
@@ -64,6 +71,7 @@ public class GeographicArea {
         setTypeArea(typeArea);
         setLocal(local);
         setSensorList(sensorList);
+        mHouseList = new HouseList();
     }
 
     public GeographicArea(String name, TypeArea typeArea, Local local, SensorList sensorList, HouseList houselist) {
@@ -86,6 +94,7 @@ public class GeographicArea {
         setTopLeftVertex(topLeftVertex);
         setBottomRightVertex(bottomRightVertex);
         setSensorList(sensorList);
+        mHouseList = new HouseList();
     }
 
     // Setters and Getters for all the parameters.
@@ -247,6 +256,18 @@ public class GeographicArea {
                 finalString = finalString + "\n" + "-" + house.getHouseDesignation() + ";";
         }
         return finalString;
+    }
+
+    /**
+     * Method to print details about the Geographic Area
+     * @return
+     */
+
+    public String printGeographicArea() {
+        String result;
+        result = this.mName + ", " + this.mTypeArea.getTypeOfGeographicArea() + ", " +
+                this.mLocal.getLatitude() + "º lat, " + this.mLocal.getLongitude() + "º long\n";
+        return result;
     }
 
     /**

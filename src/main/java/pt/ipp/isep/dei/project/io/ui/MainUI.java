@@ -53,6 +53,7 @@ public class MainUI {
         //TEST GEOGRAPHIC AREAS
         GeographicArea geoa1 = new GeographicArea("porto", new TypeArea("cidade"), new Local(4, 4));
         GeographicArea geoa2 = new GeographicArea("lisboa", new TypeArea("aldeia"), new Local(4, 4));
+        GeographicArea geoa3 = new GeographicArea("porto", new TypeArea("distrito"), new Local(4, 4));
 
         //TEST HOUSES
         HouseList houseList1 = new HouseList();
@@ -80,6 +81,7 @@ public class MainUI {
 
         mGeographicAreaList.addGeographicAreaToGeographicAreaList(geoa1);
         mGeographicAreaList.addGeographicAreaToGeographicAreaList(geoa2);
+        mGeographicAreaList.addGeographicAreaToGeographicAreaList(geoa3);
 
 
         //MAIN CODE
@@ -93,27 +95,6 @@ public class MainUI {
         boolean activeLogin = false;
 
         // Login Input
-
-        while (!activeLogin) {
-
-            System.out.println("User Login");
-            System.out.println("Login:");
-            String login = scanner.nextLine();
-            System.out.println("\nPassword:");
-            String password = scanner.nextLine();
-
-            // Login Definition
-
-            if ("admin".equals(login) && "admin".equals(password)) {
-                loginFlag = 1;
-                activeLogin = true;
-            } else if ("user".equals(login) && "user".equals(password)) {
-                loginFlag = 2;
-                activeLogin = true;
-            } else System.out.println("Invalid user\n");
-        }
-        System.out.println("User Flag is:\n" + loginFlag);
-
 
         while (activeProgram) {
 
@@ -285,7 +266,7 @@ public class MainUI {
                     enterToReturnToConsole.nextLine();
                     break;
                 case 623:
-                    US623UI view623 = new US623UI();
+                    HouseMonitoringUI view623 = new HouseMonitoringUI();
                     view623.run(mGeographicAreaList);
                     System.out.println(pressEnter);
                     enterToReturnToConsole.nextLine();

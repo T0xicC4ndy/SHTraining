@@ -107,6 +107,16 @@ public class HouseList {
         return result;
     }
 
+    public List<Integer> matchHouseIndexByString(String input){
+        List<Integer> result = new ArrayList<>();
+        for(int i = 0; i < mHouseList.size(); i++){
+            if (mHouseList.get(i).getHouseDesignation().equals(input)){
+                result.add(i);
+            }
+        }
+        return result;
+    }
+
     @Override
     public boolean equals(Object testObject) {
         if (this == testObject) {

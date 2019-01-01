@@ -81,15 +81,36 @@ public class GeographicAreaList {
         return finalString.toString();
     }
 
-    public String printGaList(GeographicAreaList newGeoListUi) {
+   public List<Integer>  matchGeographicAreaIndexByString(String input){
+       List<Integer> result = new ArrayList<>();
+        for(int i = 0; i < mGeographicAreaList.size(); i++){
+            if (mGeographicAreaList.get(i).getName().equals(input)){
+                result.add(i);
+            }
+        }
+        return result;
+    }
+
+
+    public String printGeoGraphicAreaElementsByIndex (List<Integer> indexes){
+        String result = "---------------\n";
+        for (int i = 0 ; i<indexes.size() ; i++ ) {
+            int pos = indexes.get(i);
+            result = result + indexes.get(i) + ") " + mGeographicAreaList.get(pos).printGeographicArea();
+        }
+        result = result + "---------------";
+        return result;
+    }
+
+    public String printGaList(GeographicAreaList newGeoList) {
         String result = "---------------\n";
 
-        if (newGeoListUi.getGeographicAreaList().isEmpty()){
+        if (newGeoList.getGeographicAreaList().isEmpty()){
             return "Invalid List - List is Empty\n";
         }
 
-        for (int i = 0; i < newGeoListUi.getGeographicAreaList().size(); i++) {
-            GeographicArea aux = newGeoListUi.getGeographicAreaList().get(i);
+        for (int i = 0; i < newGeoList.getGeographicAreaList().size(); i++) {
+            GeographicArea aux = newGeoList.getGeographicAreaList().get(i);
             result = result + i + ") Name: " + aux.getName() + " | ";
             result = result + "Type: " + aux.getTypeArea().getTypeOfGeographicArea() + " | ";
             result = result + "Latitude: " + aux.getLocal().getLatitude() + " | ";
